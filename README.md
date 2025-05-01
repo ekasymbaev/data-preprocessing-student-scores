@@ -1,29 +1,103 @@
-# Student Grading Data Preprocessing
+# 🎓 Student Stress Level Prediction – Data Preprocessing and Classification Project
 
-This project covers full data preprocessing steps on a student grading dataset from Kaggle. It is part of a course assignment that requires applying various data cleaning and transformation techniques.
+This project involves analyzing and modeling the **Students Grading Dataset** from Kaggle to understand the patterns behind student stress. It combines two key stages: data preprocessing and machine learning classification using a decision tree model.
+
+---
 
 ## 📁 Dataset
-- [Students Grading Dataset](http://kaggle.com/datasets/mahmoudelhemaly/students-grading-dataset)
 
-## ✅ Tasks Completed
-We implemented **all 5 data preprocessing steps** using at least one technique for each:
+- [Students Grading Dataset on Kaggle](https://www.kaggle.com/datasets/mahmoudelhemaly/students-grading-dataset)
 
-1. **Data Cleaning**
-   - Removed duplicates
-   - Handled missing values using mean imputation
-   - Cleaned string formatting (lowercased, stripped whitespace)
+The dataset includes academic, behavioral, and lifestyle data such as:
+- Exam scores (midterm, final)
+- Participation and attendance
+- Assignments, quizzes, and project scores
+- Sleep and study hours
+- Background: gender, department, internet access, parental education
+- Target variable: `Stress_Level (1–10)` → transformed into `Stress_Level_Category`
 
-2. **Data Integration**
-   - (Optional step, skipped — no additional datasets were added)
+---
 
-3. **Data Reduction**
-   - Applied **Attribute Subset Selection** to keep only relevant features
+## 🧹 Data Preprocessing Steps (Homework 3)
 
-4. **Data Transformation**
-   - Manually normalized numerical data using min-max normalization formula
+We applied all 5 major preprocessing steps:
 
-5. **Data Discretization**
-   - Converted normalized **Stress_Level (1–10)** into 3 labeled categories: Low, Medium, High
+### 1. Data Cleaning
+- Removed duplicate rows
+- Filled missing values using mean imputation for numeric fields
+- Standardized string formats (lowercased, trimmed)
 
-## 🧪 Output
-The final cleaned and preprocessed dataset is saved as:
+### 2. Data Integration
+- This step was skipped, as no external datasets were added
+
+### 3. Data Reduction
+- Used Attribute Subset Selection to keep only relevant features
+- Removed identifiers (e.g., Student_ID, Name, Email)
+
+### 4. Data Transformation
+- Applied **Min-Max Normalization** manually to numeric fields
+- Scaled all scores and hours to a 0–1 range
+
+### 5. Data Discretization
+- Converted `Stress_Level (1–10)` into three labeled categories:
+  - Low (0.00–0.33)
+  - Medium (0.34–0.66)
+  - High (0.67–1.00)
+- Created a new target column: `Stress_Level_Category`
+
+**Final preprocessed dataset:** `preprocessed_students_data.csv`
+
+---
+
+## 🧠 Classification Model (Homework 4)
+
+### Model Type: Classification  
+We used a supervised classification model to predict which **stress level category** each student belongs to based on their academic and behavioral data.
+
+### Algorithm: Decision Tree Classifier
+We chose the **Decision Tree Classifier** because it:
+- Works well with structured data
+- Handles both categorical and numerical features
+- Provides clear decision rules and is easy to visualize
+
+---
+
+## 📊 Results
+
+- **Accuracy:** 100% on the test set
+- **Model Evaluation:** Perfect precision, recall, and F1-score for all categories (Low, Medium, High)
+- **Key Findings:**
+  - `Stress_Level (1–10)` was the most important predictor
+  - Other top features: Sleep hours, Final Score, Participation
+  - Students with low sleep and low scores had higher stress levels
+  - Students with higher performance and sleep were in lower stress categories
+
+---
+
+## 📸 Screenshots to Include
+
+1. Stress Level Distribution Bar Chart
+2. Classification Report Output
+3. Decision Tree Visualization
+4. Feature Importance Chart (Optional)
+
+---
+
+## 📁 Files Included
+
+- `StdGrdClassif.ipynb` – Notebook with all preprocessing + classification code
+- `preprocessed_students_data.csv` – Final dataset after preprocessing
+- `README.md` – This file
+- `report.pdf` – Professional write-up explaining model choice and findings
+- Screenshots – PNGs showing key outputs
+
+---
+
+## 🧾 Author
+
+**Erzhigit Kasymbaev**  
+Course: Data Mining  
+Instructor: Professor Sabina Adhikari
+
+---
+
